@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +14,15 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  List<int> numbers = [];
+
+  void onClicked() {
+    setState(() {
+      numbers.add(numbers.length);
+      log('$numbers');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,28 +48,17 @@ class _AppState extends State<App> {
   }
 }
 
-class MyLargeTitle extends StatefulWidget {
+class MyLargeTitle extends StatelessWidget {
   const MyLargeTitle({
     super.key,
   });
 
   @override
-  State<MyLargeTitle> createState() => _MyLargeTitleState();
-}
-
-class _MyLargeTitleState extends State<MyLargeTitle> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       'My Large Title',
       style: TextStyle(
         fontSize: 30,
-        color: Theme.of(context).textTheme.titleLarge?.color,
       ),
     );
   }
